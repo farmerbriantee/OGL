@@ -11,3 +11,16 @@ C:\Users\Grizs\Desktop\OGL\obj\Debug\OGL.csproj.CopyComplete
 C:\Users\Grizs\Desktop\OGL\obj\Debug\OGL.exe
 C:\Users\Grizs\Desktop\OGL\obj\Debug\OGL.pdb
 C:\Users\Grizs\Desktop\OGL\obj\Debug\OGL.OGL.resources
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Debug\OGL.exe.config
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Debug\OGL.exe
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Debug\OGL.pdb
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Debug\OpenTK.dll
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Debug\OpenTK.GLControl.dll
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Debug\OGL.csproj.AssemblyReference.cache
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Debug\OGL.Form_OGL.resources
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Debug\OGL.Properties.Resources.resources
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Debug\OGL.csproj.GenerateResource.cache
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Debug\OGL.csproj.CoreCompileInputs.cache
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Debug\OGL.csproj.CopyComplete
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Debug\OGL.exe
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Debug\OGL.pdb

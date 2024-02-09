@@ -16,7 +16,7 @@ namespace OGL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OGL());
+            Application.Run(new Form_OGL());
         }
     }
 }

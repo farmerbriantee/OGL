@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OGL
 {
-    public partial class OGL : Form
+    public partial class Form_OGL : Form
     {
         private Point fixPt;
 
@@ -30,18 +30,125 @@ namespace OGL
         public List<CSeg> segList = new List<CSeg>();
         private Random rnd = new Random();
 
+        private int last;
         private double camDistance = -500;
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form_OGL_Load(object sender, EventArgs e)
         {
             timer1.Interval = 50;
 
             InitializeVectors();
+
+            Screen myScreen = Screen.FromControl(this);
+            Rectangle area = myScreen.WorkingArea;
+
+            this.Top = (area.Height - this.Height) / 2;
+            this.Left = (area.Width - this.Width) / 2;
+            Form_OGL_ResizeEnd(this, e);
+
         }
 
-        public OGL()
+        public Form_OGL()
         {
             InitializeComponent();
+        }
+
+        private void Form_OGL_ResizeEnd(object sender, EventArgs e)
+        {
+            //Width = Height;
+
+            glWin.Height = Height ;
+            glWin.Width = Width ;
+
+            glWin.Left = 0;
+            glWin.Top = 0;
+
+            glWin.MakeCurrent();
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+
+            //58 degrees view
+            GL.Viewport(0, 0, glWin.Width, glWin.Height);
+            Matrix4 mat = Matrix4.CreatePerspectiveFieldOfView(1.01f, 1.0f, 1.0f, 20000);
+            GL.LoadMatrix(ref mat);
+
+            GL.MatrixMode(MatrixMode.Modelview);
+
+            //tlp1.Width = Width - oglSelf.Width - 4;
+            //tlp1.Left = oglSelf.Width;
+
+            //Screen myScreen = Screen.FromControl(this);
+            //Rectangle area = myScreen.WorkingArea;
+
+            //this.Top = (area.Height - this.Height) / 2;
+            //this.Left = (area.Width - this.Width) / 2;
+        }
+
+        private void Form_OGL_ClientSizeChanged(object sender, EventArgs e)
+        {
+            Form_OGL_ResizeEnd(this, e);
+        }
+
+        private void InitializeVectors()
+        {
+            segList?.Clear();
+            int num = rnd.Next(50) + 2;
+            for (int i = 0; i < num; i++)
+            {
+                segList.Add(new CSeg());
+            }
+
+            camDistance = 0;
+            for (int i = 0; i < segList.Count; i++)
+            {
+                if (i == 0)
+                {
+                    segList[i].rate = 1;
+                    segList[i].direction = 1;
+                    segList[i].length = rnd.Next(10) + 10;
+                    segList[i].iAngle = rnd.Next(359);
+                }
+                else
+                {
+                    segList[i].rate = rnd.Next(5) + 1;
+                    segList[i].length = rnd.Next(40) + 2;
+
+                    int dir = rnd.Next(2);
+                    if (dir == 0) segList[i].direction = -1;
+                    else segList[i].direction = dir;
+
+                    segList[i].iAngle = rnd.Next(359);
+                }
+            }
+            lblSegments.Text = camDistance.ToString("N1");
+            last = segList[0].iAngle + 3;
+            if (last > 359) last -= 360;
+
+            camDistance = 100;
+
+            timer1.Interval = rnd.Next(30) + 20;
+
+            lblSegments.Text = segList.Count.ToString();
+
+            for (int i = 0; i < segList.Count; i++)
+            {
+
+                //first is not carried
+                if (i == 0)
+                {
+                    segList[i].ptA = new vec2(); //set to origin
+                    segList[i].ptB = new vec2(segList[i].ptA.easting + segList[i].length * Math.Sin(glm.toRadians(segList[i].iAngle)),
+                        segList[i].ptA.northing + segList[i].length * Math.Cos(glm.toRadians(segList[i].iAngle)));
+                }
+                else
+                {
+                    segList[i].ptA = new vec2(segList[i - 1].ptB);
+
+                    segList[i].ptB = new vec2(segList[i].ptA.easting + segList[i].length * Math.Sin(glm.toRadians(segList[i].iAngle)),
+                        segList[i].ptA.northing + segList[i].length * Math.Cos(glm.toRadians(segList[i].iAngle)));
+                }
+            }
+
         }
 
         private void glWin_Paint(object sender, PaintEventArgs e)
@@ -144,83 +251,6 @@ namespace OGL
                 GL.Flush();
             }
         }
-
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            if (Height > Width)
-            {
-
-            }
-            else
-            {
-
-            }
-        }
-
-        private int last;
-
-        private void InitializeVectors()
-        {
-            segList?.Clear();
-            int num = rnd.Next(50) + 2;
-            for (int i = 0; i < num; i++)
-            {
-                segList.Add(new CSeg());
-            }
-
-            camDistance = 0;
-            for (int i = 0; i < segList.Count; i++)
-            {
-                if (i == 0)
-                {
-                    segList[i].rate = 1;
-                    segList[i].direction = 1;
-                    segList[i].length = rnd.Next(10) + 10;
-                    segList[i].iAngle = rnd.Next(359);
-                }
-                else
-                {
-                    segList[i].rate = rnd.Next(5) + 1;
-                    segList[i].length = rnd.Next(40) + 2;
-
-                    int dir = rnd.Next(2);
-                    if (dir == 0) segList[i].direction = -1;
-                    else segList[i].direction = dir;
-
-                    segList[i].iAngle = rnd.Next(359);
-                }
-            }
-            lblSegments.Text = camDistance.ToString("N1");
-            last = segList[0].iAngle + 3;
-            if (last > 359) last -= 360;
-
-            camDistance = 100;
-
-            timer1.Interval = rnd.Next(30) + 10;
-
-            lblSegments.Text = segList.Count.ToString();
-
-            for (int i = 0; i < segList.Count; i++)
-            {
-
-                //first is not carried
-                if (i == 0)
-                {
-                    segList[i].ptA = new vec2(); //set to origin
-                    segList[i].ptB = new vec2(segList[i].ptA.easting + segList[i].length * Math.Sin(glm.toRadians(segList[i].iAngle)),
-                        segList[i].ptA.northing + segList[i].length * Math.Cos(glm.toRadians(segList[i].iAngle)));
-                }
-                else
-                {
-                    segList[i].ptA = new vec2(segList[i - 1].ptB);
-
-                    segList[i].ptB = new vec2(segList[i].ptA.easting + segList[i].length * Math.Sin(glm.toRadians(segList[i].iAngle)),
-                        segList[i].ptA.northing + segList[i].length * Math.Cos(glm.toRadians(segList[i].iAngle)));
-                }
-            }
-
-        }
-
 
         private void glWin_Load(object sender, EventArgs e)
         {
