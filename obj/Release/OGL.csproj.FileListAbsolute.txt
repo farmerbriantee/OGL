@@ -1,0 +1,13 @@
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Release\OGL.exe.config
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Release\OGL.exe
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Release\OGL.pdb
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Release\OpenTK.dll
+C:\Users\Grizs\Desktop\Gits\OGL\bin\Release\OpenTK.GLControl.dll
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Release\OGL.csproj.AssemblyReference.cache
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Release\OGL.Form_OGL.resources
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Release\OGL.Properties.Resources.resources
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Release\OGL.csproj.GenerateResource.cache
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Release\OGL.csproj.CoreCompileInputs.cache
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Release\OGL.csproj.CopyComplete
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Release\OGL.exe
+C:\Users\Grizs\Desktop\Gits\OGL\obj\Release\OGL.pdb

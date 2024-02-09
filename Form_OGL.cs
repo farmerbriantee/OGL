@@ -57,8 +57,8 @@ namespace OGL
         {
             //Width = Height;
 
-            glWin.Height = Height ;
-            glWin.Width = Width ;
+            glWin.Height = Height -25;
+            glWin.Width = Width;
 
             glWin.Left = 0;
             glWin.Top = 0;
@@ -110,7 +110,7 @@ namespace OGL
                 }
                 else
                 {
-                    segList[i].rate = rnd.Next(5) + 1;
+                    segList[i].rate = rnd.Next(5) + 1 + i/10;
                     segList[i].length = rnd.Next(40) + 2;
 
                     int dir = rnd.Next(2);
@@ -126,7 +126,7 @@ namespace OGL
 
             camDistance = 100;
 
-            timer1.Interval = rnd.Next(30) + 20;
+            timer1.Interval = rnd.Next(50) + 20;
 
             lblSegments.Text = segList.Count.ToString();
 
@@ -211,11 +211,11 @@ namespace OGL
             {
                 secList.Add(new vec2(segList[segList.Count - 1].ptB));
 
-                if ((Math.Abs(secList[secList.Count - 1].easting*2) > camDistance))
-                    camDistance = Math.Abs(secList[secList.Count - 1].easting)*2;
+                if ((Math.Abs(secList[secList.Count - 1].easting*2.05) > camDistance))
+                    camDistance = Math.Abs(secList[secList.Count - 1].easting)*2.05;
 
-                if ((Math.Abs(secList[secList.Count - 1].northing*2) > camDistance))
-                    camDistance = Math.Abs(secList[secList.Count - 1].northing)*2;
+                if ((Math.Abs(secList[secList.Count - 1].northing*2.12) > camDistance))
+                    camDistance = Math.Abs(secList[secList.Count - 1].northing)*2.2;
 
                 GL.LineWidth(1);
                 GL.Begin(PrimitiveType.Lines);

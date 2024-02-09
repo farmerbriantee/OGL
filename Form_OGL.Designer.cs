@@ -37,10 +37,11 @@
             // glWin
             // 
             this.glWin.BackColor = System.Drawing.Color.Black;
-            this.glWin.Location = new System.Drawing.Point(6, 7);
-            this.glWin.Margin = new System.Windows.Forms.Padding(8);
+            this.glWin.ForeColor = System.Drawing.Color.Coral;
+            this.glWin.Location = new System.Drawing.Point(10, 8);
+            this.glWin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.glWin.Name = "glWin";
-            this.glWin.Size = new System.Drawing.Size(800, 800);
+            this.glWin.Size = new System.Drawing.Size(502, 447);
             this.glWin.TabIndex = 0;
             this.glWin.VSync = false;
             this.glWin.Load += new System.EventHandler(this.glWin_Load);
@@ -57,22 +58,23 @@
             this.lblSegments.AutoSize = true;
             this.lblSegments.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblSegments.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblSegments.Location = new System.Drawing.Point(12, 12);
+            this.lblSegments.Location = new System.Drawing.Point(14, 14);
+            this.lblSegments.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSegments.Name = "lblSegments";
-            this.lblSegments.Size = new System.Drawing.Size(57, 20);
+            this.lblSegments.Size = new System.Drawing.Size(68, 23);
             this.lblSegments.TabIndex = 1;
             this.lblSegments.Text = "label1";
             // 
             // Form_OGL
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(812, 809);
+            this.ClientSize = new System.Drawing.Size(519, 470);
             this.Controls.Add(this.lblSegments);
             this.Controls.Add(this.glWin);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form_OGL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Never Twice";
